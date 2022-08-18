@@ -1,0 +1,5 @@
+/domain/target/
+/business/target/
+/applications/target/
+
+/.idea/
