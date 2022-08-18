@@ -12,8 +12,11 @@
         <module>domain</module>
         <module>business</module>
         <module>applications</module>
+        <module>applications/app-service</module>
+        <module>applications/app-proxy</module>
     </modules>
     <properties>
+        <springboot.version>2.5.4</springboot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
