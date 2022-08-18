@@ -2,6 +2,8 @@ package org.example.cardgame.domain;
 
 import co.com.sofka.domain.generic.Entity;
 
+import java.util.Objects;
+
 public class Jugador extends Entity<JugadorId> {
 
     private final String alias;
@@ -23,7 +25,7 @@ public class Jugador extends Entity<JugadorId> {
     }
 
     public void agregarMazo(Mazo mazo) {
-        this.mazo = mazo;
+        this.mazo = Objects.requireNonNull(mazo, "El mazo esta null");
     }
     public void quitarCartaAMazo(String cartaMaestraId){
         this.mazo = this.mazo.quitarCarta(cartaMaestraId);

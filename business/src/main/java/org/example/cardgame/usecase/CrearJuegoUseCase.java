@@ -7,9 +7,12 @@ import org.example.cardgame.usecase.gateways.ConsultarCartaMaestraService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class CrearJuegoUseCase implements Function<Mono<CrearJuegoCommand>, Flux<DomainEvent>> {
 
@@ -36,7 +39,15 @@ public class CrearJuegoUseCase implements Function<Mono<CrearJuegoCommand>, Flux
     }
 
     private Mazo generarMazo(List<CartaMaestra> cartas) {
-        //TODO: sacar 5 0 6 cartas para el jugador de manera aleatorio
-        return null;
+        Random random = new Random();
+        var cartasList = new ArrayList<>(cartas);
+        List<Carta> carta =  cartas.stream().map(c ->{
+            int randomIndex = random.nextInt(cartasList.size());
+            CartaMaestra cartaMaestra = cartasList.get(randomIndex);
+            cartasList.remove(randomIndex);
+            return new Carta(cartaMaestra.getPoder(),cartaMaestra.getId(),false);
+        }).limit(4).collect(Collectors.toList());
+
+        return new Mazo(Set.copyOf(carta));
     }
 }

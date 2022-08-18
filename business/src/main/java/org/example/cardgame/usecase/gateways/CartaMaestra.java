@@ -6,6 +6,16 @@ public class CartaMaestra {
     private Integer poder;
     private String nombre;
 
+    public CartaMaestra(){
+
+    }
+    public CartaMaestra(String id, String url, Integer poder, String nombre) {
+        this.id = id;
+        this.url = url;
+        this.poder = poder;
+        this.nombre = nombre;
+    }
+
     public String getUrl() {
         return url;
     }
