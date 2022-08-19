@@ -1,26 +1,20 @@
-package org.example.cardgame.domain;
+package org.example.cardgame.domain.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
+import org.example.cardgame.domain.values.JugadorId;
 
-public class JugadorAgregado extends DomainEvent {
+public class JuegoFinalizado extends DomainEvent {
     private final JugadorId jugadorId;
     private final String alias;
-    private final Mazo mazo;
 
-    public JugadorAgregado(JugadorId jugadorId, String alias, Mazo mazo) {
-        super("cardgame.jugadoragregado");
-
+    public JuegoFinalizado(JugadorId jugadorId, String alias) {
+        super("cargame.juegofinalizado");
         this.jugadorId = jugadorId;
         this.alias = alias;
-        this.mazo = mazo;
     }
 
     public JugadorId getJugadorId() {
         return jugadorId;
-    }
-
-    public Mazo getMazo() {
-        return mazo;
     }
 
     public String getAlias() {

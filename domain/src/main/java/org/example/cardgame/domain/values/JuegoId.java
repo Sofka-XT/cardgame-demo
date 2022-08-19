@@ -1,10 +1,14 @@
-package org.example.cardgame.domain;
+package org.example.cardgame.domain.values;
 
 import co.com.sofka.domain.generic.Identity;
 
 public class JuegoId extends Identity {
-    private JuegoId(String juegoId) {
+    public JuegoId(String juegoId) {
         super(juegoId);
+    }
+
+    public JuegoId() {
+
     }
 
     public static JuegoId of(String juegoId) {

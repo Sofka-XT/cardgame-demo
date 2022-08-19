@@ -1,42 +1,38 @@
 package org.example.cardgame.domain;
 
 import co.com.sofka.domain.generic.Entity;
+import org.example.cardgame.domain.values.Carta;
+import org.example.cardgame.domain.values.JugadorId;
+import org.example.cardgame.domain.values.Mazo;
 
 import java.util.Objects;
 
 public class Jugador extends Entity<JugadorId> {
-
-    private final String alias;
-    private Integer puntos;
+    private final String email;
     private Mazo mazo;
 
-    public Jugador(JugadorId id, String alias) {
-        super(id);
-        this.alias = alias;
-        puntos = 0;
+    public Jugador(JugadorId entityId, String email, Mazo mazo) {
+        super(entityId);
+        this.email = Objects.requireNonNull(email);
+        this.mazo = Objects.requireNonNull(mazo);
+        if (mazo.value().cantidad() <= 0) {
+            throw new IllegalArgumentException("El mazo debe contener cartas ");
+        }
     }
 
-    public void agregarPuntos(Integer puntos){
-        this.puntos = puntos + this.puntos;
+    public void agregarCartaAMazo(Carta carta) {
+        mazo = mazo.nuevaCarta(carta);
+    }
+
+    public void quitarCartaDeMazo(Carta carta) {
+        mazo = mazo.retirarCarta(carta);
     }
 
     public String alias() {
-        return alias;
-    }
-
-    public void agregarMazo(Mazo mazo) {
-        this.mazo = Objects.requireNonNull(mazo, "El mazo esta null");
-    }
-    public void quitarCartaAMazo(String cartaMaestraId){
-        this.mazo = this.mazo.quitarCarta(cartaMaestraId);
-    }
-    public void agregarCartaAMazo(Carta carta){
-        this.mazo = this.mazo.agregarCarta(carta);
+        return email;
     }
 
     public Mazo mazo() {
         return mazo;
     }
-
-
 }
