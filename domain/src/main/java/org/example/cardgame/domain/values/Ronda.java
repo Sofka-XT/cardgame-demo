@@ -55,7 +55,6 @@ public class Ronda implements ValueObject<Ronda.Props> {
      * @return the ronda
      */
     public Ronda incrementarRonda(Set<JugadorId> jugadores) {
-        System.out.println("nueva ronda");
         return new Ronda(this.numero + 1, jugadores, false);
     }
 

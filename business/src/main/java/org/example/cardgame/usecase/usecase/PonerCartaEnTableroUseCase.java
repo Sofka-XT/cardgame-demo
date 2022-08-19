@@ -10,10 +10,10 @@ import org.example.cardgame.usecase.gateway.JuegoDomainEventRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.logging.Logger;
+import java.util.Optional;
+
 
 public class PonerCartaEnTableroUseCase extends UseCaseForCommand<PonerCartaEnTablero> {
-    private final Logger log = Logger.getLogger(PonerCartaEnTableroUseCase.class.getCanonicalName());
     private final JuegoDomainEventRepository repository;
 
     public PonerCartaEnTableroUseCase(JuegoDomainEventRepository repository) {
@@ -32,14 +32,18 @@ public class PonerCartaEnTableroUseCase extends UseCaseForCommand<PonerCartaEnTa
                     var cartasDelJugador = juego.jugadores().get(jugadorId).mazo().value().cartas();
                     var cartaSeleccionado = seleccionarCarta(command.getCartaId(), cartasDelJugador);
 
-                    var cantidad = (long) juego.tablero().partida()
-                            .get(jugadorId).size();
-                    if (cantidad >= 2) {
-                        throw new IllegalArgumentException("No puede poner mas de 2 cartas en el tablero");
-                    }
+                    validarCantidadDelJugador(juego, jugadorId);
                     juego.ponerCartaEnTablero(tableroId, jugadorId, cartaSeleccionado);
                     return juego.getUncommittedChanges();
                 }));
+    }
+
+    private void validarCantidadDelJugador(Juego juego, JugadorId jugadorId) {
+        var cantidad = (long) juego.tablero().partida()
+                .get(jugadorId).size();
+        if (cantidad >= 2) {
+            throw new IllegalArgumentException("No puede poner mas de 2 cartas en el tablero");
+        }
     }
 
     private Carta seleccionarCarta(String cartaId, java.util.Set<Carta> cartasDelJugador) {

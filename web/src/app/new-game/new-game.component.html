@@ -1,0 +1,11 @@
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <select formControlName="jugador"  multiple>
+        <option [ngValue]="null" disabled>Seleccione un jugador</option>
+        <option *ngFor="let jugador of jugadores" [ngValue]="jugador">
+         {{ jugador.alias }}
+        </option>
+      </select> 
+   <button type="submit">Crear Juego</button>
+</form>
+
