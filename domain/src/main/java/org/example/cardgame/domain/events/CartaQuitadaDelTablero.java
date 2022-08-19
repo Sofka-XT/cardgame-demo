@@ -5,11 +5,21 @@ import org.example.cardgame.domain.values.Carta;
 import org.example.cardgame.domain.values.JugadorId;
 import org.example.cardgame.domain.values.TableroId;
 
+/**
+ * The type Carta quitada del tablero.
+ */
 public class CartaQuitadaDelTablero extends DomainEvent {
     private final TableroId tableroId;
     private final JugadorId jugadorId;
     private final Carta carta;
 
+    /**
+     * Instantiates a new Carta quitada del tablero.
+     *
+     * @param tableroId the tablero id
+     * @param jugadorId the jugador id
+     * @param carta     the carta
+     */
     public CartaQuitadaDelTablero(TableroId tableroId, JugadorId jugadorId, Carta carta) {
         super("cargame.cartaquitadadeltablero");
         this.tableroId = tableroId;
@@ -17,14 +27,29 @@ public class CartaQuitadaDelTablero extends DomainEvent {
         this.carta = carta;
     }
 
+    /**
+     * Gets carta.
+     *
+     * @return the carta
+     */
     public Carta getCarta() {
         return carta;
     }
 
+    /**
+     * Gets jugador id.
+     *
+     * @return the jugador id
+     */
     public JugadorId getJugadorId() {
         return jugadorId;
     }
 
+    /**
+     * Gets tablero id.
+     *
+     * @return the tablero id
+     */
     public TableroId getTableroId() {
         return tableroId;
     }

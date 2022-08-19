@@ -6,11 +6,21 @@ import org.example.cardgame.domain.values.JugadorId;
 
 import java.util.Set;
 
+/**
+ * The type Cartas asignadas a jugador.
+ */
 public class CartasAsignadasAJugador extends DomainEvent {
     private final JugadorId ganadorId;
     private final Integer puntos;
     private final Set<Carta> cartasApuesta;
 
+    /**
+     * Instantiates a new Cartas asignadas a jugador.
+     *
+     * @param ganadorId     the ganador id
+     * @param puntos        the puntos
+     * @param cartasApuesta the cartas apuesta
+     */
     public CartasAsignadasAJugador(JugadorId ganadorId, Integer puntos, Set<Carta> cartasApuesta) {
         super("cargame.cartasasignadasajugador");
         this.ganadorId = ganadorId;
@@ -18,14 +28,29 @@ public class CartasAsignadasAJugador extends DomainEvent {
         this.cartasApuesta = cartasApuesta;
     }
 
+    /**
+     * Gets puntos.
+     *
+     * @return the puntos
+     */
     public Integer getPuntos() {
         return puntos;
     }
 
+    /**
+     * Gets ganador id.
+     *
+     * @return the ganador id
+     */
     public JugadorId getGanadorId() {
         return ganadorId;
     }
 
+    /**
+     * Gets cartas apuesta.
+     *
+     * @return the cartas apuesta
+     */
     public Set<Carta> getCartasApuesta() {
         return cartasApuesta;
     }

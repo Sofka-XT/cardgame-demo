@@ -6,7 +6,15 @@ import org.example.cardgame.domain.events.*;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * The type Juego event change.
+ */
 public class JuegoEventChange extends EventChange {
+    /**
+     * Instantiates a new Juego event change.
+     *
+     * @param juego the juego
+     */
     public JuegoEventChange(Juego juego) {
         apply((JuegoCreado event) -> {
             juego.jugadores = new HashMap<>();
