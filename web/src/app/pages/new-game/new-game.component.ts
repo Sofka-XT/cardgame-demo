@@ -14,7 +14,7 @@ import { v1 as uuidv1 } from 'uuid';
 export class NewGameComponent implements OnInit, OnDestroy {
   form: FormGroup;
   juegoId: string;
-  jugadores: Jugador[] = []
+  jugadores?: Jugador[]
   //TODO: sacarlo de una lista de jugadores
 
   constructor(private api: ApiService, private auth: AuthService) {
@@ -23,7 +23,10 @@ export class NewGameComponent implements OnInit, OnDestroy {
     });
     this.juegoId = uuidv1();
      
-    this.jugadores = api.jugadores;
+    api.getJugadores().subscribe((jugadores) => {
+      this.jugadores = jugadores;
+     });
+     
    }
  
 
@@ -36,9 +39,11 @@ export class NewGameComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(){
-    const jugadores = this.form.value.jugador.map((jugador: Jugador) => {
-      return [jugador.uid, jugador.alias]
-    });
+ 
+    const jugadores: any = {};
+    this.form.value.jugador.forEach((user:any) => {
+      jugadores[user.uid] = user.displayName;
+    })
     this.api.crearJuego({
       jugadorPrincipalId: this.auth.user.uid,
       juegoId: this.juegoId,

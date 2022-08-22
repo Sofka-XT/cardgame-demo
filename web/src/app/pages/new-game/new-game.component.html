@@ -1,4 +1,4 @@
-Fomulario
+<h3>Crear Juego</h3>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <select formControlName="jugador"  multiple>
         <option [ngValue]="null" disabled>Seleccione un jugador</option>
@@ -6,6 +6,7 @@ Fomulario
          {{ jugador.alias }}
         </option>
       </select> 
+      <br />
    <button type="submit">Crear Juego</button>
 </form>
 
