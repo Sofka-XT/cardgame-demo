@@ -39,6 +39,14 @@ public class QueryHandle {
     }
 
 
+    //TODO: obtener tablero
+    @Bean
+    public RouterFunction<ServerResponse> getTablero() { return null; }
+
+    //TODO: obtener mazo
+    @Bean
+    public RouterFunction<ServerResponse> getMazo() {return null;}
+
     private Query filterByUId(String uid) {
         return new Query(
                 Criteria.where("uid").is(uid)

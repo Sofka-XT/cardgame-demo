@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
 
+//TODO: servicio para autenticación con google y firebase
 @Injectable({
   providedIn: 'root'
 })
