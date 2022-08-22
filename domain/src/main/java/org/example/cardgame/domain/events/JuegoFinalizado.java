@@ -17,7 +17,7 @@ public class JuegoFinalizado extends DomainEvent {
      * @param alias     the alias
      */
     public JuegoFinalizado(JugadorId jugadorId, String alias) {
-        super("cargame.juegofinalizado");
+        super("cardgame.juegofinalizado");
         this.jugadorId = jugadorId;
         this.alias = alias;
     }

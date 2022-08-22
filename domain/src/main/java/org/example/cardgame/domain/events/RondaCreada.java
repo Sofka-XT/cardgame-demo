@@ -17,7 +17,7 @@ public class RondaCreada extends DomainEvent {
      * @param tiempo the tiempo
      */
     public RondaCreada(Ronda ronda, Integer tiempo) {
-        super("cargame.rondacreada");
+        super("cardgame.rondacreada");
         this.ronda = ronda;
         this.tiempo = tiempo;
     }

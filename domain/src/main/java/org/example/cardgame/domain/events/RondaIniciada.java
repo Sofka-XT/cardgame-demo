@@ -10,6 +10,6 @@ public class RondaIniciada extends DomainEvent {
      * Instantiates a new Ronda iniciada.
      */
     public RondaIniciada() {
-        super("cargame.rondainiciada");
+        super("cardgame.rondainiciada");
     }
 }

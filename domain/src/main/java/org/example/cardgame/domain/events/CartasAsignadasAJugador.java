@@ -22,7 +22,7 @@ public class CartasAsignadasAJugador extends DomainEvent {
      * @param cartasApuesta the cartas apuesta
      */
     public CartasAsignadasAJugador(JugadorId ganadorId, Integer puntos, Set<Carta> cartasApuesta) {
-        super("cargame.cartasasignadasajugador");
+        super("cardgame.cartasasignadasajugador");
         this.ganadorId = ganadorId;
         this.puntos = puntos;
         this.cartasApuesta = cartasApuesta;

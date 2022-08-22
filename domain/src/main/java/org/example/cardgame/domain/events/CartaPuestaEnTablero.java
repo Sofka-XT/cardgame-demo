@@ -21,7 +21,7 @@ public class CartaPuestaEnTablero extends DomainEvent {
      * @param carta     the carta
      */
     public CartaPuestaEnTablero(TableroId tableroId, JugadorId jugadorId, Carta carta) {
-        super("cargame.ponercartaentablero");
+        super("cardgame.ponercartaentablero");
         this.tableroId = tableroId;
         this.jugadorId = jugadorId;
         this.carta = carta;

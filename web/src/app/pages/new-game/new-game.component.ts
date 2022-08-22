@@ -1,11 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ApiService } from '../services/api.service';
+import { Jugador } from 'src/app/shared/model/juego';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { v1 as uuidv1 } from 'uuid';
-export class Jugador { 
-  constructor(public id:string, public alias:string) {
-  }	
-} 
+
 
 @Component({
   selector: 'app-new-game',
@@ -15,17 +14,16 @@ export class Jugador {
 export class NewGameComponent implements OnInit, OnDestroy {
   form: FormGroup;
   juegoId: string;
+  jugadores: Jugador[] = []
   //TODO: sacarlo de una lista de jugadores
-  jugadores: Jugador[] = [
-    new Jugador("xxx", "raul"),
-    new Jugador("yyy", "pedro"),
-    new Jugador("fff", "juan"),
-  ]
-  constructor(private api: ApiService) {
+
+  constructor(private api: ApiService, private auth: AuthService) {
     this.form = new FormGroup({
       jugador: new FormControl()
     });
     this.juegoId = uuidv1();
+     
+    this.jugadores = api.jugadores;
    }
  
 
@@ -39,14 +37,12 @@ export class NewGameComponent implements OnInit, OnDestroy {
 
   onSubmit(){
     const jugadores = this.form.value.jugador.map((jugador: Jugador) => {
-      return [jugador.id, jugador.alias]
+      return [jugador.uid, jugador.alias]
     });
     this.api.crearJuego({
-      jugadorPrincipalId: "fff",
+      jugadorPrincipalId: this.auth.user.uid,
       juegoId: this.juegoId,
       jugadores:jugadores
-    }).subscribe(log => {
-      // TODO: trabajar con los pipe
-    });
+    }).subscribe();
   }
 }

@@ -21,7 +21,7 @@ public class TableroCreado extends DomainEvent {
      * @param jugadorIds the jugador ids
      */
     public TableroCreado(TableroId tableroId, Set<JugadorId> jugadorIds) {
-        super("cargame.tablerocreado");
+        super("cardgame.tablerocreado");
         this.tableroId = tableroId;
         this.jugadorIds = jugadorIds;
     }

@@ -20,7 +20,7 @@ public class JugadorAgregado extends DomainEvent {
      * @param mazo     the mazo
      */
     public JugadorAgregado(JugadorId identity, String alias, Mazo mazo) {
-        super("cargame.jugadoragregado");
+        super("cardgame.jugadoragregado");
         this.identity = identity;
         this.alias = alias;
         this.mazo = mazo;

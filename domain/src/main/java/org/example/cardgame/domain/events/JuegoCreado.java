@@ -15,7 +15,7 @@ public class JuegoCreado extends DomainEvent {
      * @param jugadorPrincipal the jugador principal
      */
     public JuegoCreado(JugadorId jugadorPrincipal) {
-        super("cargame.juegocreado");
+        super("cardgame.juegocreado");
         this.jugadorPrincipal = jugadorPrincipal;
     }
 

@@ -20,7 +20,7 @@ public class RondaTerminada extends DomainEvent {
      * @param jugadorIds the jugador ids
      */
     public RondaTerminada(TableroId tableroId, Set<JugadorId> jugadorIds) {
-        super("cargame.rondaterminada");
+        super("cardgame.rondaterminada");
         this.tableroId = tableroId;
         this.jugadorIds = jugadorIds;
     }

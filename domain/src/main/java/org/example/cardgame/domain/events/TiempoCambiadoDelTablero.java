@@ -17,7 +17,7 @@ public class TiempoCambiadoDelTablero extends DomainEvent {
      * @param tiempo    the tiempo
      */
     public TiempoCambiadoDelTablero(TableroId tableroId, Integer tiempo) {
-        super("cargame.tiempocambiadodeltablero");
+        super("cardgame.tiempocambiadodeltablero");
         this.tableroId = tableroId;
         this.tiempo = tiempo;
     }

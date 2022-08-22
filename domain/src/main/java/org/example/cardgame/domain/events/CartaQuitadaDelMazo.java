@@ -18,7 +18,7 @@ public class CartaQuitadaDelMazo extends DomainEvent {
      * @param carta     the carta
      */
     public CartaQuitadaDelMazo(JugadorId jugadorId, Carta carta) {
-        super("cargame.cartaquitadadelmazo");
+        super("cardgame.cartaquitadadelmazo");
         this.jugadorId = jugadorId;
         this.carta = carta;
     }
