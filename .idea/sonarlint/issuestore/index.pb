@@ -1,13 +1,9 @@
 
-D
-applications/pom.xml,c/d/cd22bd51efb1b1a9cf84581e8101c05ee6a6f156
 >
 domain/pom.xml,8/b/8b11330a6810846535e4b5ba2024ccfcee112862
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
-N
-applications/app-proxy/pom.xml,f/8/f80545d980d5a03b05cb3fa22bcb7c94ccddeff0
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 ô
@@ -24,18 +20,12 @@ iapplications/app-service/src/main/java/org/example/cardgame/application/generic
 mapplications/app-service/src/main/java/org/example/cardgame/application/adapter/repo/DocumentEventStored.java,a/2/a2e88fd0381951b26ce1cd8675a9404dd24476c9
 £
 sapplications/app-service/src/main/java/org/example/cardgame/application/adapter/repo/MongoEventStoreRepository.java,a/f/af7c0dbcce39d3e138fdccb0bba09fb8c8b2a7bf
-P
- applications/app-service/pom.xml,c/7/c7a590dedf9eafca5993f04073863728ee8a51cf
 ï
 eapplications/app-service/src/main/java/org/example/cardgame/application/adapter/bus/Notification.java,e/b/ebe5e2f7b85009b0662cfb889c7de8d0359b3472
 ê
 `applications/app-service/src/main/java/org/example/cardgame/application/GsonEventSerializer.java,8/1/81b87cd865cc68992ceb52f0de1c7154bfc8e2e1
 ì
 capplications/app-service/src/main/java/org/example/cardgame/application/adapter/bus/ErrorEvent.java,d/f/dff52067bf5f03f556d05cb0e61f0f2b8f99b279
-ô
-iapplications/app-service/src/main/java/org/example/cardgame/application/adapter/bus/RabbitMQEventBus.java,d/9/d9a71b369b59dddc84af31472aff4453266ddd67
-û
-napplications/app-service/src/main/java/org/example/cardgame/application/adapter/bus/RabbitMQEventConsumer.java,7/8/78f12af92a40f24ae9fbacfa80d65d569a2c791b
 Ç
 Rdomain/src/main/java/org/example/cardgame/domain/command/CambiarTiempoCommand.java,d/2/d26c2e832885dddb1bb512a5a36e08e5800da848
 
@@ -92,19 +82,9 @@ q
 Adomain/src/main/java/org/example/cardgame/domain/values/Mazo.java,a/5/a5becc604365569cf877051ee46b419041cfe3d8
 r
 Bdomain/src/main/java/org/example/cardgame/domain/values/Ronda.java,7/8/78aeb62a731f509149c43d077d8a7050ecd968d5
-Ç
-Rbusiness/src/main/java/org/example/cardgame/usecase/usecase/CrearRondaUseCase.java,5/e/5e8c825df78c6820bb2ca1f241389c2c01f742bc
 v
 Fdomain/src/main/java/org/example/cardgame/domain/JuegoEventChange.java,3/a/3ad883dd06b0fa1774bbcb4ada1c1353a4e47171
-Ñ
-Tbusiness/src/main/java/org/example/cardgame/usecase/usecase/IniciarJuegoUseCase.java,8/4/8436bbcbdd11b8fc7b17b08283da98175830dcfe
-Ñ
-Tbusiness/src/main/java/org/example/cardgame/usecase/usecase/IniciarRondaUseCase.java,0/9/091b5c36fb6508b9780879716366791cf5c7d419
-k
-;domain/src/main/java/org/example/cardgame/domain/Juego.java,9/b/9b309278eca94a21a1addc1828d46895146ac11e
 Ç
 Rbusiness/src/main/java/org/example/cardgame/usecase/usecase/UseCaseForCommand.java,6/1/6163d414ab2d5e3fc35caae5c64e2eed49b521d1
 
 Odomain/src/main/java/org/example/cardgame/domain/command/CrearJuegoCommand.java,5/1/51a32fe7d53527074c4074c5891ac26459c635e8
-ã
-[business/src/main/java/org/example/cardgame/usecase/usecase/PonerCartaEnTableroUseCase.java,4/5/45f2291d74174e286b58e30d1071fc85b6766c56
