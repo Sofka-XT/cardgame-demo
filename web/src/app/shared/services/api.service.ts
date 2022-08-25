@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -22,8 +22,8 @@ export class ApiService {
   }
 
  
-  getJugadores() {
-    return this.afs.collection<any>(`users`).snapshotChanges().pipe(map((actions) => {
+  getJugadores(): Observable<Jugador[]> {
+    return this.afs.collection<User>(`users`).snapshotChanges().pipe(map((actions) => {
       const jugadores = actions.map(item => {
         const data = item.payload.doc.data();
         return {uid: data.uid, alias: data.displayName};
