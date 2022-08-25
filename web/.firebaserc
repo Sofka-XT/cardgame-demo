@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "card-game-sofka": {
+      "hosting": {
+        "web": [
+          "card-game-sofka"
+        ]
+      }
+    }
+  }
+}
