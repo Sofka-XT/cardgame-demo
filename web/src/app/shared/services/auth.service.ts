@@ -49,7 +49,7 @@ export class AuthService {
     return this.authLogin(new firebase.auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
         console.log("google loging");
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['home']);
       }
     });
   }

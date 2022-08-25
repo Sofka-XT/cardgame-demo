@@ -29,7 +29,7 @@ public class RabbitMQEventConsumer {
     @RabbitListener(bindings = @QueueBinding(
             value = @Queue(value = "juego.websocket", durable = "true"),
             exchange = @Exchange(value = ApplicationConfig.EXCHANGE, type = "topic"),
-            key = "cargame.#"
+            key = "cardgame.#"
     ))
     public void receivedMessage(Message<String> message) {
         var notification = Notification.from(message.getPayload());

@@ -1,40 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import {CrearJuegoCommand} from '../commands/crearJuegoCommand';
+import { CrearJuegoCommand } from '../commands/crearJuegoCommand';
 import { Jugador } from '../model/juego';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  jugadores: Jugador[] = [
-    {uid: 'ffff', alias: 'raul'},
-    {uid: 'xxx', alias: 'andres'},
-    {uid: 'ggggg', alias: 'pedro'}
-  ];
-  constructor(private http: HttpClient) { }
 
-  crearJuego(command: CrearJuegoCommand){
+  constructor(private http: HttpClient, public afs: AngularFirestore,
+  ) { }
+
+  crearJuego(command: CrearJuegoCommand) {
     return this.http.post(environment.apiBase + '/juego/crear', command);
   }
 
-  getJugadores(): Observable<Jugador[]>{
-    //TODO: consumidor para consultar los usuarios
-    return new Observable(subscriber => {
-      subscriber.next(this.jugadores);
-      subscriber.complete();
-    });
+ 
+  getJugadores() {
+    return this.afs.collection<any>(`users`).snapshotChanges().pipe(map((actions) => {
+      const jugadores = actions.map(item => {
+        const data = item.payload.doc.data();
+        return {uid: data.uid, alias: data.displayName};
+      });
+      return jugadores;
+    }));
   }
 
   //TODO: consulta de mis juegos
-  getMisJuegos(uid:string){}
+  getMisJuegos(uid: string) { }
 
   //TODO: consulta de mi mazo
-  getMiMazo(uid:string, juegoId:string){}
+  getMiMazo(uid: string, juegoId: string) { }
 
   //TODO: consulta tablero del juego
-  getTablero(juegoId:string){}
+  getTablero(juegoId: string) { }
 }
