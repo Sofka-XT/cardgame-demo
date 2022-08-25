@@ -1,13 +1,9 @@
 
-D
-applications/pom.xml,c/d/cd22bd51efb1b1a9cf84581e8101c05ee6a6f156
 >
 domain/pom.xml,8/b/8b11330a6810846535e4b5ba2024ccfcee112862
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
-N
-applications/app-proxy/pom.xml,f/8/f80545d980d5a03b05cb3fa22bcb7c94ccddeff0
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 ô
@@ -24,18 +20,12 @@ iapplications/app-service/src/main/java/org/example/cardgame/application/generic
 mapplications/app-service/src/main/java/org/example/cardgame/application/adapter/repo/DocumentEventStored.java,a/2/a2e88fd0381951b26ce1cd8675a9404dd24476c9
 £
 sapplications/app-service/src/main/java/org/example/cardgame/application/adapter/repo/MongoEventStoreRepository.java,a/f/af7c0dbcce39d3e138fdccb0bba09fb8c8b2a7bf
-P
- applications/app-service/pom.xml,c/7/c7a590dedf9eafca5993f04073863728ee8a51cf
 ï
 eapplications/app-service/src/main/java/org/example/cardgame/application/adapter/bus/Notification.java,e/b/ebe5e2f7b85009b0662cfb889c7de8d0359b3472
 ê
 `applications/app-service/src/main/java/org/example/cardgame/application/GsonEventSerializer.java,8/1/81b87cd865cc68992ceb52f0de1c7154bfc8e2e1
 ì
 capplications/app-service/src/main/java/org/example/cardgame/application/adapter/bus/ErrorEvent.java,d/f/dff52067bf5f03f556d05cb0e61f0f2b8f99b279
-ô
-iapplications/app-service/src/main/java/org/example/cardgame/application/adapter/bus/RabbitMQEventBus.java,d/9/d9a71b369b59dddc84af31472aff4453266ddd67
-û
-napplications/app-service/src/main/java/org/example/cardgame/application/adapter/bus/RabbitMQEventConsumer.java,7/8/78f12af92a40f24ae9fbacfa80d65d569a2c791b
 Ç
 Rdomain/src/main/java/org/example/cardgame/domain/command/CambiarTiempoCommand.java,d/2/d26c2e832885dddb1bb512a5a36e08e5800da848
 
@@ -86,7 +76,15 @@ m
 =domain/src/main/java/org/example/cardgame/domain/Tablero.java,4/c/4cd1ad87160045a275e091fee5f68071566cc07b
 Å
 Qdomain/src/main/java/org/example/cardgame/domain/events/CartaPuestaEnTablero.java,d/4/d4f1b50a4c69715e474e3bdb43a59ec15a4cb18e
-Ü
-Vbusiness/src/main/java/org/example/cardgame/usecase/usecase/FinalizarRondaUseCase.java,d/1/d142019b6d7c23143f51548778c663d3f8dc0ddf
 é
-^business/src/main/java/org/example/cardgame/usecase/usecase/IniciarCuentaRegresivaUseCase.java,3/6/3655085e9b05bcadcdccc42284b680b94a480fca
+^applications/app-service/src/main/java/org/example/cardgame/application/ApplicationConfig.java,d/0/d0a5a4f83244018ca1a937b2b104ef1a06a5637a
+q
+Adomain/src/main/java/org/example/cardgame/domain/values/Mazo.java,a/5/a5becc604365569cf877051ee46b419041cfe3d8
+r
+Bdomain/src/main/java/org/example/cardgame/domain/values/Ronda.java,7/8/78aeb62a731f509149c43d077d8a7050ecd968d5
+v
+Fdomain/src/main/java/org/example/cardgame/domain/JuegoEventChange.java,3/a/3ad883dd06b0fa1774bbcb4ada1c1353a4e47171
+Ç
+Rbusiness/src/main/java/org/example/cardgame/usecase/usecase/UseCaseForCommand.java,6/1/6163d414ab2d5e3fc35caae5c64e2eed49b521d1
+
+Odomain/src/main/java/org/example/cardgame/domain/command/CrearJuegoCommand.java,5/1/51a32fe7d53527074c4074c5891ac26459c635e8
