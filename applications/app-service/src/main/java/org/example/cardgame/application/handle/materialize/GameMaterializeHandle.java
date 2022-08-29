@@ -2,6 +2,8 @@ package org.example.cardgame.application.handle.materialize;
 
 import co.com.sofka.domain.generic.DomainEvent;
 
+import co.com.sofka.domain.generic.Identity;
+import org.bson.Document;
 import org.example.cardgame.domain.events.*;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
@@ -13,6 +15,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.time.Instant;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 @EnableAsync
 @Configuration
@@ -50,33 +53,100 @@ public class GameMaterializeHandle {
         template.updateFirst(getFilterByAggregateId(event), data, COLLECTION_VIEW).block();
     }
 
-    //TODO: handle tablero creado
     @EventListener
-    public void handleTableroCreado(TableroCreado event) { }
+    public void handleTableroCreado(TableroCreado event) {
+        var data = new Update();
+        var jugadores = event.getJugadorIds().stream()
+                .map(Identity::value)
+                .collect(Collectors.toList());
 
-    //TODO: handle Carta Puesta En Tablero
-    @EventListener
-    public void handleCartaPuestaEnTablero(CartaPuestaEnTablero event) {}
+        data.set("fecha", Instant.now());
+        data.set("tablero.id", event.getTableroId().value());
+        data.set("tablero.cartas", new HashMap<>());
+        data.set("tablero.jugadores", jugadores);
+        data.set("tablero.habilitado", false);
+        data.set("iniciado", true);
+        template.updateFirst(getFilterByAggregateId(event),data, COLLECTION_VIEW)
+                .block();
+    }
 
-    //TODO: handle para crear ronda
     @EventListener
-    public void handleRondaCreada(RondaCreada event) {}
+    public void handleCartaPuestaEnTablero(CartaPuestaEnTablero event) {
+        var data = new Update();
+        var document = new Document();
+        var carta = event.getCarta().value();
+        var jugadorId = event.getJugadorId().value();
+        document.put("cartaId", carta.cartaId().value());
+        document.put("estaOculta", carta.estaOculta());
+        document.put("poder", carta.poder());
+        document.put("estaHabilitada", carta.estaHabilitada());
+        document.put("jugadorId", jugadorId);
 
-    //TODO: handle tiempo cambiado del tablero
-    @EventListener
-    public void handleTiempoCambiadoDelTablero(TiempoCambiadoDelTablero event){}
+        data.set("fecha", Instant.now());
+        data.push("tablero.cartas."+jugadorId, document);
+        template.updateFirst(getFilterByAggregateId(event),data, COLLECTION_VIEW).block();
+    }
 
-    //TODO: handle para terminar la ronda
     @EventListener
-    public void handleRondaTerminada(RondaTerminada event){}
+    public void handleRondaCreada(RondaCreada event) {
+        var data = new Update();
+        var ronda = event.getRonda().value();
+        var document = new Document();
+        var jugadores = ronda.jugadores().stream()
+                .map(Identity::value)
+                .collect(Collectors.toList());
 
-    //TODO: handle para iniciar la ronda
-    @EventListener
-    public void handleRondaIniciada(RondaIniciada event){}
+        document.put("jugadores", jugadores);
+        document.put("numero", ronda.numero());
 
-    //TODO: handle para finalizar evento
+        data.set("fecha", Instant.now());
+        data.set("tiempo", event.getTiempo());
+        data.set("ronda", document);
+        template.updateFirst(getFilterByAggregateId(event),data, COLLECTION_VIEW).block();
+    }
+
     @EventListener
-    public void handleJuegoFinalizado(JuegoFinalizado event){}
+    public void handleTiempoCambiadoDelTablero(TiempoCambiadoDelTablero event){
+        var data = new Update();
+        data.set("fecha", Instant.now());
+        data.set("tiempo", event.getTiempo());
+        data.set("ronda.estaIniciada", true);
+
+        template.updateFirst(getFilterByAggregateId(event),data, COLLECTION_VIEW).block();
+    }
+
+    @EventListener
+    public void handleRondaTerminada(RondaTerminada event){
+        var data = new Update();
+        data.set("fecha", Instant.now());
+        data.set("tiempo", 0);
+        data.set("ronda.estaIniciada", false);
+        data.set("tablero.cartas", new HashMap<>());
+        data.set("tablero.habilitado", false);
+        data.set("ronda.jugadores", event.getJugadorIds());
+
+        template.updateFirst(getFilterByAggregateId(event),data, COLLECTION_VIEW).block();
+    }
+
+    @EventListener
+    public void handleRondaIniciada(RondaIniciada event){
+        var data = new Update();
+        data.set("fecha", Instant.now());
+        data.set("tablero.habilitado", true);
+
+        template.updateFirst(getFilterByAggregateId(event),data, COLLECTION_VIEW).block();
+    }
+
+    @EventListener
+    public void handleJuegoFinalizado(JuegoFinalizado event){
+        var data = new Update();
+        data.set("fecha", Instant.now());
+        data.set("ganador.alias", event.getAlias());
+        data.set("ganador.jugadorId", event.getJugadorId().value());
+        data.set("finalizado", true);
+
+        template.updateFirst(getFilterByAggregateId(event),data, COLLECTION_VIEW).block();
+    }
 
 
     private Query getFilterByAggregateId(DomainEvent event) {

@@ -84,8 +84,6 @@ r
 Bdomain/src/main/java/org/example/cardgame/domain/values/Ronda.java,7/8/78aeb62a731f509149c43d077d8a7050ecd968d5
 v
 Fdomain/src/main/java/org/example/cardgame/domain/JuegoEventChange.java,3/a/3ad883dd06b0fa1774bbcb4ada1c1353a4e47171
-‚
-Rbusiness/src/main/java/org/example/cardgame/usecase/usecase/UseCaseForCommand.java,6/1/6163d414ab2d5e3fc35caae5c64e2eed49b521d1
 
 Odomain/src/main/java/org/example/cardgame/domain/command/CrearJuegoCommand.java,5/1/51a32fe7d53527074c4074c5891ac26459c635e8
 r
@@ -106,16 +104,12 @@ Wapplications/app-service/src/main/java/org/example/cardgame/application/AppServ
 Xbusiness/src/test/java/org/example/cardgame/usecase/usecase/IniciarJuegoUseCaseTest.java,d/1/d1a16e0fc41ec928cd1090419e369bc213787781
 ‚
 Rbusiness/src/main/java/org/example/cardgame/usecase/usecase/CrearRondaUseCase.java,5/e/5e8c825df78c6820bb2ca1f241389c2c01f742bc
-k
-;domain/src/main/java/org/example/cardgame/domain/Juego.java,9/b/9b309278eca94a21a1addc1828d46895146ac11e
 ‹
 [business/src/main/java/org/example/cardgame/usecase/usecase/PonerCartaEnTableroUseCase.java,4/5/45f2291d74174e286b58e30d1071fc85b6766c56
 †
 Vbusiness/src/test/java/org/example/cardgame/usecase/usecase/CrearJuegoUseCaseTest.java,7/5/752eab0b028c16b2159a6e639fc36f1109ed0718
 †
 Vbusiness/src/test/java/org/example/cardgame/usecase/usecase/CrearRondaUseCaseTest.java,a/5/a5abc9a9418eb5b94a88d1398985966bc1fb7fa7
-‚
-Rbusiness/src/main/java/org/example/cardgame/usecase/usecase/CrearJuegoUseCase.java,e/2/e2ec0c6dd72e08e4b8665d04750b7951885863fc
 „
 Tbusiness/src/main/java/org/example/cardgame/usecase/usecase/IniciarJuegoUseCase.java,8/4/8436bbcbdd11b8fc7b17b08283da98175830dcfe
 ™
