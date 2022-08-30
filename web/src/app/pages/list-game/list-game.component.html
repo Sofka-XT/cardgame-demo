@@ -1,1 +1,49 @@
-<p>list-game works!</p>
+<app-nav></app-nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 d-md-block bg-light sidebar">
+            <app-menu></app-menu>
+        </div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="inner-adjust">
+
+                <div class="pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Lista Juegos</h1>
+                </div>
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [style.width.%]="100">
+
+                    <ng-container matColumnDef="alias">
+                        <th mat-header-cell *matHeaderCellDef> ID </th>
+                        <td mat-cell *matCellDef="let element"> {{element.id | slice:0:8}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="cantidad">
+                        <th mat-header-cell *matHeaderCellDef> Jugadores </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{element.cantidadJugadores}}
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="iniciado">
+                        <th mat-header-cell *matHeaderCellDef> ¿Esta iniciada? </th>
+                        <td mat-cell *matCellDef="let element"> {{element.iniciado? 'SI': 'NO'}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef> Accion </th>
+                        <td mat-cell *matCellDef="let element">
+                            <div *ngIf="element.iniciado">
+                                <button mat-button (click)="entrar(element.id)">ENTRAR</button>
+                            </div>
+                            <div *ngIf="!element.iniciado">
+                                <button mat-button (click)="iniciar(element.id)">INICIAR</button>
+                            </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+        </main>
+
+    </div>
+</div>

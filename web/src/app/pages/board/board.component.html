@@ -1,1 +1,56 @@
-<p>board works!</p>
+<app-nav></app-nav>
+<br />
+<div class="container-fluid">
+    <div class="row">
+
+       
+        <main role="main" class="col-md-7 ml-sm-auto col-lg-9 px-4">
+
+            <div class="pb-2 mb-3 border-bottom">
+                <h1 class="h2">Cuenta Regresiva {{tiempo}}s</h1>
+                <h4>RONDA # {{numeroRonda}} Jugadores [{{jugadoresRonda}}/{{jugadoresTablero}}]</h4>
+                <button mat-button (click)="iniciarRonda()" disabled="{{roundStarted}}" color="primary">
+                   INICIAR
+                </button>
+            </div>
+            <div class="inner-adjust">
+                <mat-grid-list cols="6" rowHeight="1:2">
+                    <mat-grid-tile *ngFor="let card of cartasDelTablero">
+                        <mat-card class="m-2">
+                            <mat-card-title-group>
+                                <img mat-card-image src="/assets/{{card.cartaId}}" />
+                            </mat-card-title-group>
+                            <mat-card-content>
+                                Poder 10px
+                            </mat-card-content>
+                        </mat-card>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </main>
+
+
+        <div class="col-md-3 d-md-block sidebar-cards ">
+            <mat-grid-list cols="1" rowHeight="2:4">
+                <mat-grid-tile *ngFor="let card of cartasDelJugador">
+                    <mat-card *ngIf="!card.estaOculta">
+
+                        <mat-card-title-group>
+                            <img mat-card-image src="/assets/{{card.cartaId}}" />
+                        </mat-card-title-group>
+                        <mat-card-content>
+                            Poder {{card.poder}}
+                        </mat-card-content>
+
+                        <mat-card-actions>
+                            <button mat-button (click)="poner(card.cartaId)" color="primary" disabled="{{!card.estaHabilitada}}">
+                                MOVER A TABLERO
+                            </button>
+                        </mat-card-actions>
+                    </mat-card>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+        </div>
+    </div>
+</div>

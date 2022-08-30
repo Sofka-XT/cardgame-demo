@@ -1,12 +1,45 @@
-<h3>Crear Juego</h3>
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <select formControlName="jugador"  multiple>
-        <option [ngValue]="null" disabled>Seleccione un jugador</option>
-        <option *ngFor="let jugador of jugadores" [ngValue]="jugador">
-         {{ jugador.alias }}
-        </option>
-      </select> 
-      <br />
-   <button type="submit">Crear Juego</button>
-</form>
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="row">
+     
 
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="inner-adjust">
+
+                <div class="pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Crear Juego</h1>
+                </div>
+                <p>Invite a los jugadores a participar del juego</p>
+                <mat-form-field class="example-full-width">
+                    <input type="text" placeholder="Selecciones jugadores" aria-label="Selecciones jugadores" matInput
+                        [matAutocomplete]="auto" [formControl]="userControl" #userInput>
+                    <mat-hint>Ingrese el nombre del jugador </mat-hint>
+                </mat-form-field>
+
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngFor="let user of filteredUsers | async" [value]="selectedUsers">
+                        <div (click)="optionClicked($event, user)">
+                            <mat-checkbox [checked]="user.selected" (change)="toggleSelection(user)"
+                                (click)="$event.stopPropagation()">
+                                {{ user.displayName }} [{{ user.email }}]
+                            </mat-checkbox>
+                        </div>
+                    </mat-option>
+                </mat-autocomplete>
+
+                <br><br>
+
+                <label>Jugadores Seleccionados:</label>
+                <mat-list dense>
+                    <mat-list-item *ngIf="selectedUsers?.length === 0">(None)</mat-list-item>
+                    <mat-list-item *ngFor="let user of selectedUsers">
+                        {{ user.displayName }} [{{ user.email }}]
+                    </mat-list-item>
+                </mat-list>
+
+                <button mat-stroked-button color="primary" (click)="crearJuego()">Crear Juego</button>
+            </div>
+        </main>
+
+    </div>
+</div>

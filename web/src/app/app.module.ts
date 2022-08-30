@@ -18,7 +18,12 @@ import { ListGameComponent } from './pages/list-game/list-game.component';
 import { BoardComponent } from './pages/board/board.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
-import { HeaderComponent } from './componets/header/header.component'
+import { HeaderComponent } from './componets/header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatAutocomplete } from '@angular/material/autocomplete';
+import { MatFormField } from '@angular/material/form-field';
+import { MatList } from '@angular/material/list';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +44,10 @@ import { HeaderComponent } from './componets/header/header.component'
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    BrowserAnimationsModule,
+    MatAutocomplete,
+    MatFormField,
+    MatList
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

@@ -5,7 +5,12 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { CrearJuegoCommand } from '../commands/crearJuegoCommand';
-import { Jugador } from '../model/juego';
+import { CrearRondaCommand } from '../commands/crearRondaCommand';
+import { IniciarJuegoCommand } from '../commands/iniciarJuegoCommand';
+import { IniciarRondaCommand } from '../commands/iniciarRondaCommand';
+import { PonerCartaCommand } from '../commands/ponerCartaCommand';
+import { JuegoModel, Jugador } from '../model/juego';
+import { TableroModel } from '../model/tablero';
 import { User } from '../model/user';
 
 @Injectable({
@@ -32,12 +37,31 @@ export class ApiService {
     }));
   }
 
-  //TODO: consulta de mis juegos
-  getMisJuegos(uid: string) { }
+  getMisJuegos(uid: string): Observable<JuegoModel[]> {
+    return this.http.get<JuegoModel[]>(environment.apiBase + '/juego/listar/'+uid);
+   }
 
-  //TODO: consulta de mi mazo
-  getMiMazo(uid: string, juegoId: string) { }
+  getMiMazo(uid: string, juegoId: string) {
+    return this.http.get(environment.apiBase + '/juego/mazo/'+uid+'/'+juegoId);
+   }
 
-  //TODO: consulta tablero del juego
-  getTablero(juegoId: string) { }
+  getTablero(juegoId: string): Observable<TableroModel> { 
+    return this.http.get<TableroModel>(environment.apiBase + '/juego/'+juegoId);
+  }
+
+  ponerCarta(command: PonerCartaCommand){
+    return this.http.post(environment.apiBase + '/juego/poner', command);
+  }
+
+  iniciarRonda(command: IniciarRondaCommand){
+    return this.http.post(environment.apiBase + '/juego/ronda/iniciar', command);
+  }
+
+  iniciar(command: IniciarJuegoCommand){
+    return this.http.post(environment.apiBase + '/juego/iniciar', command);
+  }
+
+  crearRonda(command: CrearRondaCommand){
+    return this.http.post(environment.apiBase + '/juego/crear/ronda', command);
+  }
 }
